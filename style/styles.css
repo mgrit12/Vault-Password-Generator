@@ -1,0 +1,80 @@
+/* latin */
+@font-face {
+  font-family: 'Trade Winds';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/tradewinds/v17/AYCPpXPpYNIIT7h8-QenM0Jt5vM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+/* styles.css */
+body {
+   background-color: white; /* Default background */
+   color: black; /* Default text color */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme change */
+}
+
+
+
+          
+body.dark-mode {
+    background-color: black !important;
+    color: white !important;
+}
+div#navbarsExample03 {
+    justify-content: flex-end !important;
+}
+.bd-placeholder-img {
+     font-size: 1.125rem;
+     text-anchor: middle;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none;
+}
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+}
+}
+.login_div {
+max-width: 400px !important;
+}
+
+.modal-content {
+  color: black !important;
+}
+
+
+div#qr-code img {
+  width: 120px;
+  height: 120px;
+  
+}
+
+.generate_qr{
+  margin-left: 20px;
+}
+
+.container.main_div{
+  max-width: 700px !important;
+}
+
+.custom-switch {
+  padding: 8px 10px;
+}
+
+a.nav-link {
+  margin-right: 40px;
+}
+
+#download{
+  display: none;
+}
+
+#brand_name {
+  font-family: 'Trade Winds';
+  color: orange;
+}
