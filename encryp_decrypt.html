@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Encrypt and Decrypt JSON File</title>
+    <script src="scripts/crypto-js.min.js"></script>
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="scripts/jquery-3.6.0.min.js"></script>
+    <script src="scripts/qrcode.js"></script>
+    <link rel="stylesheet" href="style/styles.css">
+    <!-- Custom styles for this template -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Trade+Winds&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <a class="navbar-brand" href="detials.html"><img src="https://img.icons8.com/flat-round/64/lock--v1.png" alt="" width="28" height="28"><span id="brand_name" style="font-family:'Trade Winds'; margin-left:10px;">Vault</span> Password Generator</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExample03">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="details.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input theme_switch nav-link " id="customSwitch1">
+        <label class="custom-control-label theme_switcher" for="customSwitch1"><svg style="color: white;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+        </svg></label>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle username" href="#" data-toggle="dropdown" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#exampleModal">Logout</a>
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Logout</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Enter Password to download Encrypted File</label>
+                    <input type="password" class="form-control" id="user_pass"> <br>
+                    <button type="button" class="btn btn-secondary btn-sm verify" id="verify" >Verify</button>
+                  </div>
+                  <button type="button" class="btn btn-secondary" id="download" >Download updated Json File</button>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger signout" class="signout">Sign out</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </li>
+    </ul>
+    </div>
+</nav>
+
+    <div class="container mt-5 style='width: 600px;margin : 0px auto'">
+        <h2 class="mt-5 text-center">Decrypt JSON File</h2>
+        <br><br>
+        <div class="custom-file mb-3">
+            <label class="custom-file-label form-label" for="fileInputDecrypt">Upload Encrypted JSON File</label>
+            <input type="file" class="custom-file-input form-control" id="fileInputDecrypt" accept=".json" required="">
+        </div>
+        <div class="mb-3">
+            <label for="masterUsername" class="form-label">Master Username</label>
+            <input type="text" class="form-control" id="Username" placeholder="Please Enter username">
+        </div>
+        <div class="mb-3">
+            <label for="masterPassword" class="form-label">Master Password</label>
+            <input type="password" class="form-control" id="Password" placeholder="Please Enter password">
+        </div>
+        <div class="mb-3" style="display: none;">
+            <label for="encryptionKeyDecrypt" class="form-label">Decryption Key</label>
+            <input type="text" class="form-control" value="1"  id="encryptionKeyDecrypt" placeholder="Enter decryption key">
+        </div>
+        <button class="btn btn-primary" onclick="decryptAndValidate()">Decrypt and Validate</button>
+    </div>
+
+    <script>
+        function decryptAndValidate() {
+            const fileInput = document.getElementById('fileInputDecrypt');
+            const file = fileInput.files[0];
+            if (!file) {
+                alert("Please select an encrypted JSON file to upload.");
+                return;
+            }
+            const decryptionKey = document.getElementById('encryptionKeyDecrypt').value;
+            if (decryptionKey.trim() === '') {
+                alert('Please provide a decryption key.');
+                return;
+            }
+            const Username = document.getElementById('masterUsername').value;
+            const Password = document.getElementById('masterPassword').value;
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const encryptedData = event.target.result;
+                try {
+                    const decryptedBytes = CryptoJS.AES.decrypt(encryptedData, decryptionKey);
+                    const decryptedData = decryptedBytes.toString(CryptoJS.enc.Utf8);
+                    if (!decryptedData) {
+                        throw new Error("Decryption failed");
+                    }
+
+                    // Parse JSON and validate user credentials
+                    const jsonData = JSON.parse(decryptedData);
+                    if (jsonData[masterUsername] && jsonData[masterUsername].password === masterPassword) {
+                        alert("Login successful!");
+                    } else {
+                        alert("Invalid username or password!");
+                    }
+                } catch (e) {
+                    alert("Error during decryption: " + e.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function downloadFile(data, filename) {
+            const blob = new Blob([data], {type: 'text/plain'});
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+<script src="scripts/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="scripts/theme.js"></script>
+<script src="scripts/script.js"></script>
+<script>
+  user_details = sessionStorage.getItem("currentUser");
+console.log(user_details); 
+if (user_details == null) {
+    alert("Please login First")
+    window.location.href = "index.html";
+}
+</script>
+</body>
+</html>
