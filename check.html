@@ -24,7 +24,7 @@
         <div class="collapse navbar-collapse" id="navbarsExample03">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="encryp_decrypt.html">Decrypt Json File<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item custom-control custom-switch">
               <input type="checkbox" class="custom-control-input theme_switch nav-link " id="customSwitch1">
@@ -59,7 +59,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-danger" id="signout">Sign out</button>
+                      <button type="button" class="btn btn-danger" class="signout">Sign out</button>
                     </div>
                   </div>
                 </div>
@@ -119,5 +119,12 @@
 <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="assets/dist/js/bootstrap.bundle.min.js"></script>
 <script src="scripts/theme.js"></script>
 <script src="scripts/script.js"></script>
+<script>
+  user_details = sessionStorage.getItem("currentUser");
+console.log(user_details); 
+if (user_details == null) {
+    window.location.href = "index.html";
+}
+</script>
 </body>
 </html>
